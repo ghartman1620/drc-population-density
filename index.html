@@ -49,6 +49,7 @@
                        .enter()
                        .append("path")
                        .attr("d", path)
+                       .attr("stroke", "black")
                        .attr("fill", c => {
                             let datum = data.find(function(d){
                                 return d.province === c.properties.Name;
