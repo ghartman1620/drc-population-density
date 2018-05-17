@@ -25,10 +25,6 @@
 			var w = 1500;
 			var h = 900;
 
-            var projection = d3.geoMercator();
-            console.log(projection.scale());
-            projection.scale([2000]);
-            console.log(projection.translate());
 			var path = d3.geoPath().projection(d3.geoMercator().scale([2000]).translate([10, 250]));
 
 
@@ -41,23 +37,12 @@
             
 			d3.json("DRC_simple.json", function(json) {
 				d3.csv("drc2.csv", function(data){
-                    console.log(data);
                     const colors = ["#c6dbef", "#9ecae1", "#6baed6", "#3182bd","#08519c"]
                     var color = d3.scaleQuantize()
                         .domain([d3.min(data, d => d.population2015/d.area), d3.max(data, d => d.population2015/d.area)])
                         .range(colors);
                         //color source: https://betterfigures.org/2015/06/23/picking-a-colour-scale-for-scientific-graphics/
-                    console.log([d3.min(data, d => d.population2015/d.area), d3.max(data, d => d.population2015/d.area)]);
-                    console.log(json);
-                    //Bind data and create one path per GeoJSON feature
-                    
-                    console.log("**********************json");
-                    for(var datum of json.features){
-                        var f = data.find(d=> d.province === datum.properties.Name);
-                        if(f===undefined){
-                            console.log(datum.properties.Name);
-                        }
-                    }
+  
                     
                     svg.selectAll("path")
                        .data(json.features)
@@ -91,8 +76,7 @@
                     
                     
                     var ticks = color.ticks(colors.length);
-                    console.log(ticks);
-                    console.log(color.ticks(9));
+
                     svg.selectAll("rect")
                         .data(ticks)
                         .enter()
