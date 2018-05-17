@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>D3: Loading GeoJSON data and generating SVG paths</title>
+		<title>DRC Population</title>
 		<script type="text/javascript" src="../d3.js"></script>
 		<style type="text/css">
             .title {
@@ -11,13 +11,22 @@
 		</style>
 	</head>
 	<body>
-        <h1 class="title"> Democratic Republic of the Congo</h1>
+        <h1 class="title"> Democratic Republic of the Congo, Population Density in 2005</h1>
         <h3 class="title"> By Gabriel Hartman</h3>
+        <h5 class="title"> Population estimated in 2005 based on voter registration information. </h5>
+        <svg></svg>
+        <p><a href="https://github.com/ghartman1620/drc-population-density">Github</a></p>
+        <p><a href="https://en.wikipedia.org/wiki/List_of_provinces_of_the_Democratic_Republic_of_the_Congo">Population data for the provinces of the DRC</a>, based on 
+        an <a href="http://www.ins-rdc.org/sites/default/files/Montage%20AnnuStat%20FINAL%202%20From%20VEROUILLE%20_0.pdf">annual statistics publication by the DRC.</a></p>
+        <p>Gabriel Hartman</p>
+        <p>Instructor: Suresh Lodha</p>
+        <p>CMPS 165: Data programming for Visualization</p>
+        <p>Spring 2018</p>
 		<script type="text/javascript">
 
 			//Width and height
-			var w = 5000;
-			var h = 3000;
+			var w = 1500;
+			var h = 900;
 
             var projection = d3.geoMercator();
             console.log(projection.scale());
@@ -27,8 +36,7 @@
 
 
 			//Create SVG element
-			var svg = d3.select("body")
-						.append("svg")
+			var svg = d3.select("svg")
 						.attr("width", w)
 						.attr("height", h);
 			//Load in GeoJSON data
